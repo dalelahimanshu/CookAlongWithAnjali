@@ -627,8 +627,8 @@ function initStaticContent() {
   renderMessageCarousel(kitchenMessages);
   renderCarousel(getVisibleUpdates());
   renderComingSoonCarousel(comingSoonItems);
-  renderRecipeGrid(el.freeRecipes, freeRecipes);
-  renderRecipeGrid(el.premiumRecipes, premiumRecipes);
+  if (el.freeRecipes) renderRecipeGrid(el.freeRecipes, freeRecipes);
+  if (el.premiumRecipes) renderRecipeGrid(el.premiumRecipes, premiumRecipes);
   renderYoutubeGrid(el.youtubeVideosGrid, [], "");
   renderYoutubeGrid(el.youtubeShortsGrid, [], "");
 }
