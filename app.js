@@ -389,6 +389,7 @@ function renderRecipeGrid(container, recipes) {
 }
 
 function renderYoutubeGrid(container, items, emptyMessage) {
+  console.log('renderYoutubeGrid called:', container?.id, 'items:', items.length);
   if (!container) return;
 
   if (!items.length) {
