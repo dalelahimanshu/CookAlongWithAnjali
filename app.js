@@ -146,6 +146,10 @@ const el = {
   googleLogin: document.getElementById("googleLogin"),
   facebookLogin: document.getElementById("facebookLogin"),
   authMessage: document.getElementById("authMessage"),
+  anjaliProfileTrigger: document.getElementById("anjaliProfileTrigger"),
+  anjaliSidePanel: document.getElementById("anjaliSidePanel"),
+  anjaliPanelBackdrop: document.getElementById("anjaliPanelBackdrop"),
+  closeAnjaliPanel: document.getElementById("closeAnjaliPanel"),
 };
 
 function getVisibleUpdates() {
@@ -489,6 +493,18 @@ function toggleAuthModal(open) {
   if (!open) setAuthMessage("");
 }
 
+function toggleAnjaliPanel(open) {
+  if (!el.anjaliSidePanel || !el.anjaliPanelBackdrop) return;
+
+  el.anjaliPanelBackdrop.classList.toggle("hidden", !open);
+  el.anjaliSidePanel.classList.toggle("hidden", !open);
+  requestAnimationFrame(() => {
+    el.anjaliSidePanel.classList.toggle("open", open);
+  });
+  el.anjaliSidePanel.setAttribute("aria-hidden", String(!open));
+}
+
+
 function updateUiForUser() {
   const loggedIn = Boolean(appState.user);
   el.loginBtn.classList.toggle("hidden", loggedIn);
@@ -641,6 +657,21 @@ function initAuthHandlers() {
 
   el.loginBtn.addEventListener("click", () => toggleAuthModal(true));
   el.closeModal.addEventListener("click", () => toggleAuthModal(false));
+
+  if (el.anjaliProfileTrigger && el.anjaliSidePanel) {
+    el.anjaliProfileTrigger.addEventListener("click", () => toggleAnjaliPanel(true));
+    el.anjaliProfileTrigger.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleAnjaliPanel(true);
+      }
+    });
+    el.closeAnjaliPanel?.addEventListener("click", () => toggleAnjaliPanel(false));
+    el.anjaliPanelBackdrop?.addEventListener("click", () => toggleAnjaliPanel(false));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") toggleAnjaliPanel(false);
+    });
+  }
 
   el.googleLogin.addEventListener("click", async () => {
     try {

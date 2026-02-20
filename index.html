@@ -16,7 +16,7 @@
     <header class="site-header">
       <div class="brand">
         <img
-          class="brand-avatar"
+          class="brand-avatar" id="anjaliProfileTrigger" role="button" tabindex="0" aria-label="Open Anjali profile panel"
           src="assets/images/anjali-portrait.jpg"
           alt="Anjali"
           loading="lazy"
@@ -381,6 +381,22 @@
         </aside>
       </div>
 
+
+    <div id="anjaliPanelBackdrop" class="side-panel-backdrop hidden"></div>
+    <aside id="anjaliSidePanel" class="side-panel hidden" aria-hidden="true">
+      <button id="closeAnjaliPanel" class="side-panel-close" aria-label="Close Anjali panel">&times;</button>
+      <div class="side-panel-header">
+        <img src="assets/images/anjali-portrait.jpg" alt="Anjali" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80'" />
+        <div>
+          <p class="eyebrow">Meet Anjali Jain</p>
+          <h3></h3>
+        </div>
+      </div>
+      <p>From Jaipur to Mumbai, bringing Rajasthan food culture to your home.</p>
+      <p>Hi, I am Anjali Jain, a working professional bringing ghar ka khana to your table.</p>
+      <p>This family cooking space shares quick and easy recipes inspired by maa ke haath ka khana and everyday home flavors.</p>
+      <p>For busy families, working professionals, and everyone living away from home who misses simple, comforting meals.</p>
+    </aside>
 
     <div id="authModal" class="modal hidden" aria-hidden="true">
       <div class="modal-card">
